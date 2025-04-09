@@ -15,7 +15,6 @@ h1 {
 }
 
 .hero-sec {
-  background: url("../../public/assets/e889ed338c35f7ed209bcd24ce0c4055.png")
-    no-repeat center;
+  background: url("../../public/assets/heropic.svg") no-repeat center;
   background-size: cover;
 }
