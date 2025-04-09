@@ -12,7 +12,7 @@ const DateSec = () => {
         height={0}
         sizes="100vw"
         style={{ width: "100%", height: "auto" }}
-        quality={80}
+        quality={100}
       />
     </div>
   );

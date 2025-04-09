@@ -5,7 +5,7 @@ import ThirdSec from "@/components/ThirdSec";
 
 export default function Home() {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col max-w-[420px]">
       <Hero />
       <DateSec />
       <ThirdSec />

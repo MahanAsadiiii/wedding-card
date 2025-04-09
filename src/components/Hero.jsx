@@ -9,7 +9,7 @@ const Hero = () => {
         alt="hero pic"
         src={Heropic}
         priority
-        quality={75}
+        quality={100}
         fill
         sizes="100vw"
         style={{ objectFit: "cover" }}
