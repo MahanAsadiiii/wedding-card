@@ -1,8 +1,11 @@
+import { Heropic } from "@/utilities";
+import Image from "next/image";
 import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative h-[846px] hero-sec flex">
+    <div className="relative h-[846px] flex">
+      <Image alt="hero pic" src={Heropic} />
       <div className="flex flex-col absolute top-20 w-full px-6 gap-5">
         <p className="text-xl flex w-full justify-start">
           اشتیاقی که به دیدار تو دارد دل من

@@ -13,8 +13,3 @@ a {
 h1 {
   @apply font-[Morabba-Semibold] text-[36px];
 }
-
-.hero-sec {
-  background: url("../../public/assets/heropic.svg") no-repeat center;
-  background-size: cover;
-}
