@@ -7,6 +7,9 @@ import Couple3 from "../../public/assets/couple3.png";
 import Flowers from "../../public/assets/flowers.png";
 import Address from "../../public/assets/address.svg";
 import Heropic from "../../public/assets/heropic.svg";
+import VectorFlower3 from "../../public/assets/Vector3.svg";
+import VectorFlower4 from "../../public/assets/Vector4.svg";
+import VectorFlower5 from "../../public/assets/Vector5.svg";
 
 export {
   leafVector,
@@ -18,4 +21,7 @@ export {
   Address,
   Couple3,
   Heropic,
+  VectorFlower3,
+  VectorFlower4,
+  VectorFlower5,
 };

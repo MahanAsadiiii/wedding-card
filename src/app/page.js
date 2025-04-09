@@ -1,3 +1,4 @@
+import Contactus from "@/components/Contactus";
 import DateSec from "@/components/DateSec";
 import Hero from "@/components/Hero";
 import ThirdSec from "@/components/ThirdSec";
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <DateSec />
       <ThirdSec />
+      <Contactus />
     </section>
   );
 }

@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: "Morabba";
+  font-family: "Morabba-extrabold";
   src: url("../../public/fonts/Morabba-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
@@ -45,7 +45,7 @@
 }
 
 @font-face {
-  font-family: "Morabba";
+  font-family: "Morabba-light";
   src: url("../../public/fonts/Morabba-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;

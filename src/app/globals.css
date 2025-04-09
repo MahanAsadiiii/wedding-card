@@ -6,10 +6,28 @@ body {
   direction: rtl;
 }
 p,
-a {
+a,
+button {
   @apply font-[Morabba-Regular];
 }
 
+input,
+textarea {
+  @apply font-[Morabba-Regular] pr-3;
+}
+
+label {
+  @apply font-[Morabba-medium] pr-3;
+}
+
 h1 {
-  @apply font-[Morabba-Semibold] text-[36px];
+  @apply font-[Morabba-extrabold];
+}
+h2 {
+  @apply font-[Morabba-light] text-[20px];
+}
+
+::placeholder {
+  color: black;
+  @apply font-[Morabba-Regular];
 }

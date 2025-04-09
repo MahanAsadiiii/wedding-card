@@ -5,8 +5,16 @@ import React from "react";
 const Hero = () => {
   return (
     <div className="relative h-[846px] flex">
-      <Image alt="hero pic" src={Heropic} />
-      <div className="flex flex-col absolute top-20 w-full px-6 gap-5">
+      <Image
+        alt="hero pic"
+        src={Heropic}
+        priority
+        quality={75}
+        fill
+        sizes="100vw"
+        style={{ objectFit: "cover" }}
+      />
+      <div className="flex flex-col absolute top-20 w-full px-6 gap-5 z-10">
         <p className="text-xl flex w-full justify-start">
           اشتیاقی که به دیدار تو دارد دل من
         </p>
