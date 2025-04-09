@@ -1,26 +1,21 @@
+@import "../styles/fonts.css";
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply flex justify-center;
+  direction: rtl;
+}
+p,
+a {
+  @apply font-[Morabba-Regular];
+}
+
+h1 {
+  @apply font-[Morabba-Semibold] text-[36px];
+}
+
+.hero-sec {
+  background: url("../../public/assets/e889ed338c35f7ed209bcd24ce0c4055.png")
+    no-repeat center;
+  background-size: cover;
 }
