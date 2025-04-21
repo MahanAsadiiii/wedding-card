@@ -62,8 +62,8 @@ const Contactus = () => {
   return (
     <section className="bg-[#374234] flex flex-col items-center relative text-white leading-10 gap-7">
       <Image alt="" src={VectorFlower3} className="absolute top-0 right-0" />
-      <h2 className="mt-14 flex flex-wrap text-[20px]">
-        ممنون میشیم جهت کمک به برگزاری بهتر و <br /> دقیق تر این جشن فرم زیر را
+      <h2 className="mt-14 flex flex-wrap text-[20px] w-4/5">
+        ممنون میشیم جهت کمک به برگزاری بهتر و دقیق تر این جشن فرم زیر را
         برامون پر کنید
       </h2>
       <Image alt="" src={VectorFlower5} className="absolute left-2 top-64" />
