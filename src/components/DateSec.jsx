@@ -4,7 +4,7 @@ import React from "react";
 
 const DateSec = () => {
   return (
-    <div className="relative w-full aspect-auto">
+    <div className="relative w-full aspect-auto pt-4 bg-[#9E7468]">
       <Image
         alt="Date information"
         src={Frame3}

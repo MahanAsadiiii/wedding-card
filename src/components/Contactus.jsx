@@ -1,7 +1,8 @@
 "use client";
 import { VectorFlower3, VectorFlower4, VectorFlower5 } from "@/utilities";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const Contactus = () => {
   const [attendance, setAttendance] = useState("");
@@ -10,73 +11,56 @@ const Contactus = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState({ message: "", isError: false });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef(null)
 
-  const handleSubmit = async (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
+   setIsSubmitting(true)
     if (!name) {
       setStatus({
         message: "لطفا نام و نام خانوادگی را وارد کنید",
         isError: true,
       });
+      setIsSubmitting(false)
       return;
     }
-
+    
     if (!attendance) {
       setStatus({
         message: "لطفا مشخص کنید آیا در مراسم شرکت می‌کنید",
         isError: true,
       });
+      setIsSubmitting(false)
       return;
     }
 
-    try {
-      setIsSubmitting(true);
-      setStatus({ message: "", isError: false });
-
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    emailjs.sendForm('service_rwgpdoo', 'template_sa0evgg', formRef.current, {
+        publicKey: 'rT74FeaTptIuS61wT',
+      })
+      .then(
+        () => {
+          setStatus({
+            message: "ممنون از شما! فرم با موفقیت ارسال شد.",
+            isError: false,
+          });
+          setName("");
+          setAttendance("");
+          setMessage("");
+          setPhone("");
+          formRef.current.reset();
+          setIsSubmitting(false);
         },
-        body: JSON.stringify({
-          name,
-          phone,
-          message,
-          willAttend: attendance === "Yes" ? "بله" : "خیر",
-        }),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setStatus({
-          message: "ممنون از شما! فرم با موفقیت ارسال شد.",
-          isError: false,
-        });
-        // Reset form
-        setName("");
-        setPhone("");
-        setMessage("");
-        setAttendance("");
-      } else {
-        setStatus({
-          message: "خطا در ارسال فرم. لطفا دوباره تلاش کنید.",
-          isError: true,
-        });
-      }
-    } catch (error) {
-      setStatus({
-        message: "خطا در ارسال فرم. لطفا دوباره تلاش کنید.",
-        isError: true,
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+        (error) => {
+          setStatus({
+            message: "خطا در ارسال فرم. لطفا دوباره تلاش کنید.",
+            isError: true,
+          });
+          console.log('FAILED...', error.text);
+        },
+      );
   };
-
   return (
-    <div className="bg-[#374234] flex flex-col items-center relative text-white leading-10 gap-7">
+    <section className="bg-[#374234] flex flex-col items-center relative text-white leading-10 gap-7">
       <Image alt="" src={VectorFlower3} className="absolute top-0 right-0" />
       <h2 className="mt-14 flex flex-wrap text-[20px]">
         ممنون میشیم جهت کمک به برگزاری بهتر و <br /> دقیق تر این جشن فرم زیر را
@@ -93,19 +77,20 @@ const Contactus = () => {
         src={VectorFlower5}
         className="absolute -right-2 top-50 rotate-[60deg]"
       />
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-[85%]">
+      <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-3 w-[85%]">
         <input
           type="text"
           placeholder="نام و نام خانوادگی(الزامی)"
           className="bg-white text-black rounded-sm"
           value={name}
+          name="name"
           onChange={(e) => setName(e.target.value)}
-          required
         />
         <input
-          type="text"
+          type="tel"
           placeholder="شماره تماس"
           className="bg-white text-black rounded-sm"
+          name="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
@@ -113,6 +98,7 @@ const Contactus = () => {
           placeholder="دلنوشته"
           rows={3}
           className="bg-white text-black rounded-sm"
+          name="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -130,6 +116,7 @@ const Contactus = () => {
               value="Yes"
               checked={attendance === "Yes"}
               onChange={() => setAttendance("Yes")}
+              name="attendance"
             />
             <label htmlFor="yes" className="cursor-pointer">
               بله، حتما
@@ -145,6 +132,7 @@ const Contactus = () => {
               type="radio"
               id="no"
               value="No"
+              name="attendance"
               checked={attendance === "No"}
               onChange={() => setAttendance("No")}
             />
@@ -155,32 +143,30 @@ const Contactus = () => {
         </div>
 
         {status.message && (
-          <div
+          <h2
             className={`text-center p-2 rounded ${
-              status.isError ? "bg-red-700" : "bg-green-700"
+              status.isError ? "bg-red-700" : "bg-green-400"
             }`}
           >
             {status.message}
-          </div>
+          </h2>
         )}
 
-        <h1 className="text-center leading-6">
-          لطفاً حضور خود را حداکثر تا{" "}
-          <span className="text-[#F4B2A0]">دو هفته</span> پیش از مراسم اعلام
-          فرمایید.
+        <h1 className="text-[15px] text-center leading-8">
+        لطفاً حضور خود را حداکثر تا <span className="text-[#F4B2A0]">۲۰ اردیبهشت</span> اعلام فرمایید.
         </h1>
         <button
           type="submit"
           disabled={isSubmitting}
           className={`bg-white rounded-sm text-black text-xl py-3 hover:scale-90 ease-in-out duration-300 ${
-            isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+            isSubmitting ? " animate-pulse opacity-70 cursor-not-allowed" : ""
           }`}
         >
           {isSubmitting ? "در حال ارسال..." : "ارسال"}
         </button>
       </form>
       <Image alt="" src={VectorFlower4} className="" />
-    </div>
+    </section>
   );
 };
 

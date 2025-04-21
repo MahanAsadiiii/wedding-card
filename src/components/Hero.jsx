@@ -4,15 +4,14 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative h-[846px] flex">
+    <div className="relative h-[650px] flex min-w-full">
       <Image
         alt="hero pic"
         src={Heropic}
         priority
         quality={100}
         fill
-        sizes="100vw"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "contain" }}
       />
       <div className="flex flex-col absolute top-20 w-full px-6 gap-5 z-10">
         <p className="text-xl flex w-full justify-start">
