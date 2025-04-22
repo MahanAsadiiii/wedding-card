@@ -34,14 +34,14 @@ const Contactus = () => {
       return;
     }
 
-    if (phone.length < 11) {
-      setStatus({
-        message: "لطفا شماره موبایل ۱۱ رقمی وارد کنید",
-        isError: true,
-      });
-      setIsSubmitting(false);
-      return;
-    }
+    // if (phone.length < 11) {
+    //   setStatus({
+    //     message: "لطفا شماره موبایل ۱۱ رقمی وارد کنید",
+    //     isError: true,
+    //   });
+    //   setIsSubmitting(false);
+    //   return;
+    // }
 
     emailjs
       .sendForm("service_08v4e8w", "template_qdx721d", formRef.current, {
