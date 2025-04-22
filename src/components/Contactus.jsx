@@ -2,7 +2,7 @@
 import { VectorFlower3, VectorFlower4, VectorFlower5 } from "@/utilities";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 const Contactus = () => {
   const [attendance, setAttendance] = useState("");
@@ -11,31 +11,41 @@ const Contactus = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState({ message: "", isError: false });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef(null)
+  const formRef = useRef(null);
 
   const sendEmail = async (e) => {
     e.preventDefault();
-   setIsSubmitting(true)
+    setIsSubmitting(true);
     if (!name) {
       setStatus({
         message: "لطفا نام و نام خانوادگی را وارد کنید",
         isError: true,
       });
-      setIsSubmitting(false)
+      setIsSubmitting(false);
       return;
     }
-    
+
     if (!attendance) {
       setStatus({
         message: "لطفا مشخص کنید آیا در مراسم شرکت می‌کنید",
         isError: true,
       });
-      setIsSubmitting(false)
+      setIsSubmitting(false);
       return;
     }
 
-    emailjs.sendForm('service_rwgpdoo', 'template_sa0evgg', formRef.current, {
-        publicKey: 'rT74FeaTptIuS61wT',
+    if (phone.length < 11) {
+      setStatus({
+        message: "لطفا شماره موبایل ۱۱ رقمی وارد کنید",
+        isError: true,
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    emailjs
+      .sendForm("service_08v4e8w", "template_qdx721d", formRef.current, {
+        publicKey: "eBZi42MxJP54WjKQM",
       })
       .then(
         () => {
@@ -55,16 +65,17 @@ const Contactus = () => {
             message: "خطا در ارسال فرم. لطفا دوباره تلاش کنید.",
             isError: true,
           });
-          console.log('FAILED...', error.text);
-        },
+          console.log("FAILED...", error.text);
+          setIsSubmitting(false);
+        }
       );
   };
   return (
-    <section className="bg-[#374234] flex flex-col items-center relative text-white leading-10 gap-7">
+    <section className="bg-[#374234] flex flex-col items-center relative text-white leading-10 gap-7 px-5">
       <Image alt="" src={VectorFlower3} className="absolute top-0 right-0" />
-      <h2 className="mt-14 flex flex-wrap text-[20px] w-4/5">
-        ممنون میشیم جهت کمک به برگزاری بهتر و دقیق تر این جشن فرم زیر را
-        برامون پر کنید
+      <h2 className="mt-14 flex text-lg leading-9">
+        ممنون میشیم جهت کمک به برگزاری بهتر و دقیق تر این جشن فرم زیر را برامون
+        پر کنید
       </h2>
       <Image alt="" src={VectorFlower5} className="absolute left-2 top-64" />
       <Image
@@ -77,7 +88,11 @@ const Contactus = () => {
         src={VectorFlower5}
         className="absolute -right-2 top-50 rotate-[60deg]"
       />
-      <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-3 w-[85%]">
+      <form
+        ref={formRef}
+        onSubmit={sendEmail}
+        className="flex flex-col gap-3 w-full"
+      >
         <input
           type="text"
           placeholder="نام و نام خانوادگی(الزامی)"
@@ -88,6 +103,7 @@ const Contactus = () => {
         />
         <input
           type="tel"
+          // pattern="[0-9]{11}"
           placeholder="شماره تماس"
           className="bg-white text-black rounded-sm"
           name="phone"
@@ -102,7 +118,7 @@ const Contactus = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <h2>آیا در مراسم ما شرکت میکنید؟</h2>
+        <h2 className="text-lg">آیا در مراسم ما شرکت میکنید؟</h2>
         <div className="grid grid-cols-2 gap-5">
           <div
             className={`border rounded-sm pr-4 cursor-pointer ${
@@ -118,7 +134,7 @@ const Contactus = () => {
               onChange={() => setAttendance("Yes")}
               name="attendance"
             />
-            <label htmlFor="yes" className="cursor-pointer">
+            <label htmlFor="yes" className="cursor-pointer text-sm">
               بله، حتما
             </label>
           </div>
@@ -136,7 +152,7 @@ const Contactus = () => {
               checked={attendance === "No"}
               onChange={() => setAttendance("No")}
             />
-            <label htmlFor="no" className="cursor-pointer">
+            <label htmlFor="no" className="cursor-pointer text-sm">
               خیر، متاسفانه
             </label>
           </div>
@@ -152,8 +168,9 @@ const Contactus = () => {
           </h2>
         )}
 
-        <h1 className="text-[15px] text-center leading-8">
-        لطفاً حضور خود را حداکثر تا <span className="text-[#F4B2A0]">۲۰ اردیبهشت</span> اعلام فرمایید.
+        <h1 className="text-[12px] text-center">
+          لطفاً حضور خود را حداکثر تا{" "}
+          <span className="text-[#F4B2A0]">۲۰ اردیبهشت</span> اعلام فرمایید.
         </h1>
         <button
           type="submit"

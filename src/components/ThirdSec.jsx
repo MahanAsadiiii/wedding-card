@@ -62,8 +62,8 @@ const ThirdSec = () => {
         </div>
 
         <a
-          className="bg-white rounded-xs text-xl py-3 mx-5 text-center"
-          href="https://maps.app.goo.gl/RXhdR6Zf92jqX4Fp9"
+          className="bg-white rounded-sm text-xl py-3 mx-5 text-center hover:scale-90 ease-in-out duration-300"
+          href="https://nshn.ir/14_bv_UJOx5Qjk"
           target="_blank"
         >
           مسیریابی

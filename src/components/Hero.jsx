@@ -13,17 +13,17 @@ const Hero = () => {
         fill
         style={{ objectFit: "cover" }}
       />
-      <div className="flex flex-col absolute top-20 w-full px-6 gap-5 z-10">
-        <p className="text-xl flex w-full justify-start">
+      <div className="flex flex-col absolute top-10 w-full px-4 gap-5 z-10">
+        <p className="text-lg flex w-full justify-start text-shadow-lg">
           اشتیاقی که به دیدار تو دارد دل من
         </p>
-        <p className="text-xl flex w-full justify-end">
+        <p className="text-lg flex w-full justify-end text-shadow-lg">
           دل من داند و من دانم و دل داند و من
         </p>
-        <p className="text-xl flex w-full justify-start">
+        <p className="text-lg flex w-full justify-start text-shadow-lg">
           خاک من گل شود و گل شکفد از گل من
         </p>
-        <p className="text-xl flex w-full justify-end">
+        <p className="text-lg flex w-full justify-end text-shadow-lg">
           تا ابد مهر تو بیرون نرود از دل من
         </p>
       </div>
