@@ -170,7 +170,7 @@ const Contactus = () => {
 
         <h1 className="text-[12px] text-center">
           لطفاً حضور خود را حداکثر تا{" "}
-          <span className="text-[#F4B2A0]">۲۰ اردیبهشت</span> اعلام فرمایید.
+          <span className="text-[#F4B2A0]">۲۵ اردیبهشت</span> اعلام فرمایید.
         </h1>
         <button
           type="submit"
